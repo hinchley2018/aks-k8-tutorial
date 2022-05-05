@@ -1,0 +1,21 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contoso-website
+spec:
+  template: # This is the template of the pod inside the deployment
+    metadata:
+      labels:
+        app: contoso-website
+    spec:
+      containers:
+        - image: mcr.microsoft.com/mslearn/samples/contoso-website
+          name: contoso-website
+          resources:
+            requests: # Minimum amount of resources requested
+              cpu: 100m
+              memory: 128Mi
+            limits: # Maximum amount of resources requested
+              cpu: 250m
+              memory: 256Mi
